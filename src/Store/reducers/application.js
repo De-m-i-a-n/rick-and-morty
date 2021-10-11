@@ -2,10 +2,8 @@ import {
     SET_ACTIVE_TAB
 } from '../types/types';
 
-//import { DEFAULT_LOCALE } from '../../constants';
-
 const initialState = {
-    activeTab: 'charaсters'
+    activeTab: 0
 };
 
 export default function applicationReducer (state = initialState, action) {
@@ -16,5 +14,4 @@ export default function applicationReducer (state = initialState, action) {
         return state;
     }
 }
-
 

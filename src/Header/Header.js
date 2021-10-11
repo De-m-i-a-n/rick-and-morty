@@ -14,7 +14,7 @@ export default function IconLabelTabs() {
   const dispatch = useDispatch();
 
   const handleChange = (event, newValue) => {
-    dispatch(setActiveTab({name: 1}));
+    dispatch(setActiveTab(newValue));
   };
 
   return (

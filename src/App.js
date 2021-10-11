@@ -13,46 +13,41 @@ import Pagination from './Pagination';
 import Popup from './Popupchar-info';
 
 const App = () => {
-  const [activeTab, setActiveTab] = useState('Characters')
-  const dispatch = useDispatch();
-  //const activeTab = useSelector(({ application }) => application.activeTab)
   const currentTab = useSelector(({ application }) => application.activeTab)
 
-  useEffect(() => { console.log(currentTab) }, [currentTab])
-
-  const handleActiveTab = name => {
-    setActiveTab(name)
-  }
-
+  useEffect(() => { console.log('currentTab:', currentTab) }, [currentTab])
 
    return (
     <StyledEngineProvider injectFirst>
     <Header />
 
     {
-      activeTab === 'characters' && (
-        <Characters />
+      currentTab === 0 && (
+        <Characters />        
       )
     }
 
     {
-      activeTab === 'episodes' && (
-        <Episodes />
+      currentTab === 1 && (
+        // <Episodes />
+          'Episodes'
       )
     }
 
     {
-      activeTab === 'locations' && (
-        <Locations />
+      currentTab === 2 && (
+        // <Locations />
+          'Locations'
       )
     }
 
     {
-      activeTab === 'myWatchList' && (
-        <MyWatchList />
+      currentTab === 3 && (
+        // <MyWatchList />
+          'WatchList'
       )
     }
-        
+    <SortedList />
     <Pagination />
     <Popup />
   </StyledEngineProvider>

@@ -1,4 +1,5 @@
-import * as React from 'react';
+//import * as React from 'react';
+import React, { useEffect, useState, setState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -6,6 +7,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
+import Filter from '../Filter';
+import './Characters.css';
 
 export default function CheckboxListSecondary() {
   const [checked, setChecked] = React.useState([1]);
@@ -23,35 +26,47 @@ export default function CheckboxListSecondary() {
     setChecked(newChecked);
   };
 
-  return (
-    <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {[0, 1, 2, 3].map((value) => {
-        const labelId = `checkbox-list-secondary-label-${value}`;
+  const [data, setData] = useState({})
+
+  useEffect(() => {
+    fetch('https://rickandmortyapi.com/api/character')
+        .then(response => response.json())
+        .then(res => setData(res))
+        //.then(res => console.log(res))
+        //console.log('useeffect is working')        
+  }, [])
+  console.log('my object:', data)
+  console.log(data?.results)
+  return (    
+    
+    <List dense sx={{ width: '800px', bgcolor: 'background.paper' }}>
+      <div class="flex-container">
+        <div>Name</div>
+        <div>Species</div>
+        <div>Status</div>
+        <div>Gender</div>
+
+        <div className="Filter"><Filter /></div>
+
+      </div>
+      {data?.results?.map(value => {
+
         return (
-          <ListItem
-            key={value}
-            secondaryAction={
-              <Checkbox
-                edge="end"
-                onChange={handleToggle(value)}
-                checked={checked.indexOf(value) !== -1}
-                inputProps={{ 'aria-labelledby': labelId }}
-              />
-            }
-            disablePadding
-          >
-            <ListItemButton>
-              <ListItemAvatar>
-                <Avatar
-                  alt={`Avatar n°${value + 1}`}
-                  src={`/static/images/avatar/${value + 1}.jpg`}
-                />
-              </ListItemAvatar>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-            </ListItemButton>
+                    
+          <ListItem>
+            <div class="list-item">             
+              <div class="img"><Avatar src={value.image} /></div>            
+              <span>{value.name}</span>              
+              <div>{value.species}</div>              
+              <div>{value.status}</div>              
+              <div>{value.gender}</div>
+            </div> 
           </ListItem>
+          
         );
       })}
     </List>
+    
   );
 }
+// species, status, gender
