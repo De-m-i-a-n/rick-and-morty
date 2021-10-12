@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
-import Filter from '../Filter';
+import Filter from '../Filter2';
 import './Characters.css';
 
 export default function CheckboxListSecondary() {
@@ -41,12 +41,8 @@ export default function CheckboxListSecondary() {
     
     <List dense sx={{ width: '800px', bgcolor: 'background.paper' }}>
       <div class="flex-container">
-        <div>Name</div>
-        <div>Species</div>
-        <div>Status</div>
-        <div>Gender</div>
-
-        <div className="Filter"><Filter /></div>
+        <div className="name">Name</div>        
+        <div className="filter"><Filter /></div>
 
       </div>
       {data?.results?.map(value => {
@@ -55,8 +51,8 @@ export default function CheckboxListSecondary() {
                     
           <ListItem>
             <div class="list-item">             
-              <div class="img"><Avatar src={value.image} /></div>            
-              <span>{value.name}</span>              
+              <div class="image"><Avatar src={value.image} /></div>
+              <div class="name">{value.name}</div>
               <div>{value.species}</div>              
               <div>{value.status}</div>              
               <div>{value.gender}</div>
@@ -70,3 +66,8 @@ export default function CheckboxListSecondary() {
   );
 }
 // species, status, gender
+/*
+        <div>Species</div>
+        <div>Status</div>
+        <div>Gender</div>
+        */

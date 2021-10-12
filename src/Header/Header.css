@@ -1,0 +1,23 @@
+.header-flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 800px) {
+  [class^="MuiTabs-flexContainer"] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  [class^="MuiButtonBase-root"] {
+    font-size: 0.5rem;
+    padding: 12px 26px;
+  }
+}
+
+@media only screen and (min-width: 801px) {
+  [class^="MuiButtonBase-root"] {
+    font-size: 1.5rem;
+    padding: 12px 26px;
+  }
+}

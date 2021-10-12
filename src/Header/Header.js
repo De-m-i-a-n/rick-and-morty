@@ -8,7 +8,9 @@ import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import RoomIcon from '@mui/icons-material/Room';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import './Header.css';
 
+/*
 export default function IconLabelTabs() {
   const [value, setValue] = React.useState(0);
   const dispatch = useDispatch();
@@ -26,3 +28,27 @@ export default function IconLabelTabs() {
     </Tabs>
   );
 }
+*/
+
+const Header = () => {
+  const [value, setValue] = React.useState(0);
+  const dispatch = useDispatch();
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    dispatch(setActiveTab(newValue));
+  };
+
+  return (
+    <div class="header-flex-container">
+      <Tabs value={value} onChange={handleChange} aria-label="icon label tabs example">
+        <Tab icon={<SwitchAccountIcon />} label="CHARACTERS" />
+        <Tab icon={<SubscriptionsIcon />} label="EPISODE " />
+        <Tab icon={<RoomIcon />} label="LOCATIONS" />
+        <Tab icon={<FormatListBulletedIcon />} label="My watch list" />
+      </Tabs>
+    </div>
+  );
+}
+
+export default Header;

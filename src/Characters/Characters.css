@@ -1,66 +1,95 @@
 .flex-container {
   display: flex;
-  justify-content: flex-start;
-  margin-left: 10em;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .flex-container > div {
-  width: 100px;
-  margin: 10px;
   text-align: center;
   line-height: 75px;
-  font-size: 30px;
-  margin-left: 5em;
+  color: #1976d2;
+  text-transform: uppercase;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
-.list-item {
-  display: flex;
-  justify-content: center;  
-/*
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  text-align: center;
-  margin: 10% 0;
-  min-height: 200px;        
-  align-items: center;
+.flex-container > .filter {
+  width: 550px;
+  flex-direction: row;
+}
 
-  “        width: 60vw;
-        min-width: 360px;
-        text-align: center;
-        margin: 5% auto;
-  */
-}        
+.flex-container > .name {
+  width: 100px;
+  flex-basis: 200px;
+  padding-left: 5.5rem;
+  padding-right: 4rem;
+}
+
+[class^="MuiButton-root"] { /* Filter-buttons of filter2 component */
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+[div^="MuiInputBase"] {  /* Modal window of filter-buttons */
+  letter-spacing: 0.2em;
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root { /* Modal window letter-spacing and border gap of filter buttons */
+  letter-spacing: 0.17em;
+}
+
+.list-item {  /* List of characters */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: #1976d2;                       
+  align-items: center; 
+} 
+
+[class^="MuiList"] {
+  width: auto;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 
 .list-item > div {
-  align-items: 'center';
-  background-color: #f1f1f1;
-  align-content: center;
+  display: flex;
+  justify-content: left;
   align-items: center;
-  width: 200px;
-  height: 50px;
+  width: 100px;
+  height: 25px;
   margin: 10px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
+  line-height: 35px;
+  font-size: 25px;
+}
+@media only screen and (max-width: 740px) {
+  .list-item > div {
+    height: 85px;
+  }
+  .list-item > .name {
+    justify-content: left;
+  }
+  .flex-container > div {
+    font-size: 0.9rem;
+  }
+  [class^="MuiButton-root"] { /* Filter-buttons of filter2 component */
+    font-size: 0.9rem;
+  }
 }
 
-.list-item > span {
-  width: 350px;
-  align-items: 'center';
+
+.list-item > .image {
+  justify-content: center;
+  width: 55px;
 }
 
-.img {
-  width: 60vw;
-  min-width: 360px;
-  text-align: center;
-  margin: 5% auto;
+.list-item > .name {
+  width: 300px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 25px;
 }
-
-/*
-.header {
-  margin: auto;
-  padding: 10px;
-  text-align: center;
-}
-*/
