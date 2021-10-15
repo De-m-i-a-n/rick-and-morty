@@ -9,6 +9,7 @@ export default function SelectVariants() {
 
   const handleChange = (event) => {
     setAge(event.target.value);
+    console.log('some text')
   };
 
   return (
@@ -30,9 +31,9 @@ export default function SelectVariants() {
           <MenuItem value={10}>species</MenuItem>
           <MenuItem value={20}>status</MenuItem>
           <MenuItem value={30}>gender</MenuItem>
+          
         </Select>
       </FormControl>
-
     </div>
   );
 }   

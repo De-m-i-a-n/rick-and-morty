@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import setActiveFilterType from './Store/actions/setActiveFilterType.js'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -14,10 +16,18 @@ import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 
 export default function DialogSelect() {
   const [open, setOpen] = React.useState(false);
-  const [age, setAge] = React.useState('');
+  const [type, setType] = React.useState(0);
+  const dispatch = useDispatch();
+/*original const handleChange:
 
   const handleChange = (event) => {
-    setAge(Number(event.target.value) || '');
+    setType(Number(event.target.value) || '');
+    dispatch(setActiveFilterType(Number));
+  };
+*/
+  const handleChange = (event, newValue) => {
+    setType(newValue);
+    dispatch(setActiveFilterType(newValue));
   };
 
   const handleClickOpen = () => {
@@ -34,8 +44,7 @@ export default function DialogSelect() {
     <div>
       <Button onClick={handleClickOpen}>Species{<UnfoldMoreIcon />}</Button>
       <Button onClick={handleClickOpen}>Status{<UnfoldMoreIcon />}</Button>
-      <Button onClick={handleClickOpen}>Gender{<UnfoldMoreIcon />}</Button>
-      
+      <Button onClick={handleClickOpen}>Gender{<UnfoldMoreIcon />}</Button>      
        
       <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
         <DialogTitle>Filter characters</DialogTitle>
@@ -45,7 +54,7 @@ export default function DialogSelect() {
               <InputLabel htmlFor="demo-dialog-native">Filter by:</InputLabel>
               <Select
                 native
-                value={age}
+                value={type}
                 onChange={handleChange}
                 input={<OutlinedInput label="Filter" id="demo-dialog-native" />}
               >
@@ -53,6 +62,7 @@ export default function DialogSelect() {
                 <option value={10}>Species</option>
                 <option value={20}>Status</option>
                 <option value={30}>Gender</option>
+                <option value={30}>Cancel filtering, show all</option>
               </Select>
             </FormControl>
           </Box>

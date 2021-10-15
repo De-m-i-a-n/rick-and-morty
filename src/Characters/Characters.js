@@ -37,6 +37,7 @@ export default function CheckboxListSecondary() {
   }, [])
   console.log('my object:', data)
   console.log(data?.results)
+
   return (    
     
     <List dense sx={{ width: '800px', bgcolor: 'background.paper' }}>
@@ -65,9 +66,3 @@ export default function CheckboxListSecondary() {
     
   );
 }
-// species, status, gender
-/*
-        <div>Species</div>
-        <div>Status</div>
-        <div>Gender</div>
-        */

@@ -1,4 +1,5 @@
 export const SET_ACTIVE_TAB = 'SET_ACTIVE_TAB';
+export const SET_ACTIVE_FILTER_TYPE = 'SET_ACTIVE_FILTER_TYPE';
 
 export const SET_DOMAIN = 'SET_DOMAIN';
 export const SET_LOCALE = 'SET_LOCALE';
