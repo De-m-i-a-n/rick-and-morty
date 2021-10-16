@@ -16,6 +16,14 @@
   font-weight: 500;
 }
 
+.flex-container > .flex-container-filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-items: stretch;
+}
+
 .flex-container > .filter {
   width: 550px;
   flex-direction: row;

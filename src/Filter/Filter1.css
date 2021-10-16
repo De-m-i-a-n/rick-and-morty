@@ -1,0 +1,17 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.flex-container > div {
+  text-align: center;
+  line-height: 75px;
+  color: #1976d2;
+  text-transform: uppercase;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
