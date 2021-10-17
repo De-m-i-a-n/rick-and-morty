@@ -32,7 +32,7 @@ export default function CheckboxListSecondary() {
 
   //const genderFilter = 'All';
   const genderFilter = useSelector(({ application }) => application.setSpeciesFilterType);
-  console.log(genderFilter)
+  console.log('my redux content before function:', genderFilter)
   //const filteredList = useSelector(({ application }) => application.setSpeciesFilterType);
   //useEffect(() => { console.log('genderFilter:', genderFilter) }, [genderFilter])
 
@@ -45,8 +45,8 @@ export default function CheckboxListSecondary() {
         //.then(res => console.log(res))
         //console.log('useeffect is working')
   }, [])
-  console.log('my object:', data)
-  console.log(data?.results)
+  //console.log('my object:', data)
+  //console.log(data?.results)
 /*
   genderFilter = useSelector(({ application }) => application.setSpeciesFilterType);
   useEffect(() => { console.log('genderFilter:', genderFilter) }, [genderFilter])
@@ -56,6 +56,7 @@ export default function CheckboxListSecondary() {
 /*    const currentTab = useSelector(({ application }) => application.activeTab)
     useEffect(() => { console.log('currentTab:', currentTab) }, [currentTab])
 */  
+//.filter().filter().map
     <List dense sx={{ width: '800px', bgcolor: 'background.paper' }}>
       <div class="flex-container">
         <div className="name">Name</div>
@@ -69,7 +70,7 @@ export default function CheckboxListSecondary() {
 
 
       {data?.results?.filter(item => (
-        genderFilter === 'All' ? item :
+        genderFilter.indexOf('All') > -1 ? item :
         genderFilter === 'Human' ? item.species === genderFilter :
         genderFilter === 'Alien' ? item.species === genderFilter :
         genderFilter === 'Alive' ? item.status === genderFilter :
@@ -78,7 +79,7 @@ export default function CheckboxListSecondary() {
         genderFilter === 'Male' ? item.gender === genderFilter :
         item.gender === genderFilter)).map(value => {
 
-      console.log(genderFilter)
+      console.log('my genderFilter in function:', genderFilter)
         return (
 
           <ListItem>

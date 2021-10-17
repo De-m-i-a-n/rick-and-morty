@@ -10,11 +10,12 @@ import {
 const initialState = {
     activeTab: 0,
     activeFilterType: '',
-    setSpeciesFilterType: 'Male',
+    setSpeciesFilterType: ['All'],
     SET_SPECIES_FILTER_TYPE: '',
     SET_STATUS_FILTER_TYPE: '',
-    SET_GENDER_FILTER_TYPE: ''
+    SET_GENDER_FILTER_TYPE: ''    
 };
+console.log(initialState)
 
 export default function applicationReducer (state = initialState, action) {
     switch (action.type) {

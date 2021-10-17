@@ -24,11 +24,9 @@ const names = [
   'Alien',
   'Male',
   'Female',
-  'Alien',
-  'Human',
-  'unknown',
   'Dead',
   'Alive',
+  'unknown',
   'Kelly Snyder',
 ];
 
@@ -50,12 +48,13 @@ export default function MultipleSelect() {
     const {
       target: { value },
     } = event;
-    const myValue = setPersonName(
+    setPersonName(
       // On autofill we get a the stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
+    
     dispatch(setSpeciesFilterType(value));
-    console.log(value)
+    console.log('my dispatch check:', value)
   };
 
 /*
