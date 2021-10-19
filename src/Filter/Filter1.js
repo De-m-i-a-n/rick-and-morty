@@ -10,33 +10,19 @@ import './Filter1.css'
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [value, setValue] = React.useState([]);//new line
+  const dispatch = useDispatch();//new line
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleClose = (value) => {
     setAnchorEl(null);
+    setValue(value);
+    console.log('my dispatch check:', value)//new line
+    dispatch(setSpeciesFilterType(value));//new line
+    
   };
-
-  const [value, setValue] = React.useState('');
-  const dispatch = useDispatch();
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    dispatch(setSpeciesFilterType(newValue));
-    handleClose();
-  };
-
-
-/*
-  const handleFilterSelect = name => {
-    setFilterName(name);
-    handleClose();
-  }
-
-  <MenuItem onClick={() => handleFilterSelect('Male')} />
-
-*/
-
 
   return (
     <div>
@@ -46,6 +32,7 @@ export default function BasicMenu() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        value={value}
       >
         Species <UnfoldMoreIcon />
       </Button>
@@ -53,13 +40,25 @@ export default function BasicMenu() {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
+        value={value}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'basic-button'
+          'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose, handleClose, handleChange} onClick={() => handleChange('Human')} >Human</MenuItem>
-        <MenuItem onClick={handleClose, handleChange} onClick={() => handleChange('Alien')} >Alien</MenuItem>
+        <MenuItem
+          aria-label="Human" 
+          value='Human' //new line
+          onClick={() => dispatch(value)}>
+            Human
+        </MenuItem>
+
+        <MenuItem
+          aria-label="Alien" 
+          value='Alien' //new line
+          onClick={() => dispatch(value)}>
+            Alien
+        </MenuItem>
       </Menu>
     </div>
   );

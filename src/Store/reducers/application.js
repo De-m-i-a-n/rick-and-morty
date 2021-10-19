@@ -10,7 +10,7 @@ import {
 const initialState = {
     activeTab: 0,
     activeFilterType: '',
-    setSpeciesFilterType: ['All'],
+    activeFilter: ['Male'],
     SET_SPECIES_FILTER_TYPE: '',
     SET_STATUS_FILTER_TYPE: '',
     SET_GENDER_FILTER_TYPE: ''    
@@ -24,7 +24,7 @@ export default function applicationReducer (state = initialState, action) {
     case SET_ACTIVE_FILTER_TYPE:
         return { ...state, activeFilterType: action.payload };
     case SET_SPECIES_FILTER_TYPE:
-        return { ...state, speciesFilterType: action.payload };
+        return { ...state, activeFilter: action.payload };
     case SET_STATUS_FILTER_TYPE:
         return { ...state, statusFilterType: action.payload };
     case SET_GENDER_FILTER_TYPE:
